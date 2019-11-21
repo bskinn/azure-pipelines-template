@@ -98,7 +98,7 @@ jobs:
         displayName: 'provision python 3.9'
       - script: sudo ln -s /usr/bin/python3.9 /usr/local/sbin/python
         displayName: 'Symlink Python 3.9 to "python"'
-      - script: sudo curl https://bootstrap.pypa.io/get-pip.py | python3.9
+      - script: sudo curl https://bootstrap.pypa.io/get-pip.py | sudo python3.9
         displayName: 'Update pip with get-pip.py'
       - script: sudo /usr/bin/python3.9 -m pip list
         displayName: 'Show pip-installed packages'
