@@ -95,8 +95,11 @@ jobs:
           sudo add-apt-repository ppa:deadsnakes
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends python3.9-dev python3.9-venv python3.9-distutils
-          sudo ln -s /usr/bin/python3.9 /usr/local/sbin/python
-        displayName: 'provision python 3.9 and symlink to "python"'
+        displayName: 'provision python 3.9'
+      - script: sudo ln -s /usr/bin/python3.9 /usr/local/sbin/python
+        displayName: 'Symlink Python 3.9 to "python"'
+      - script: sudo /usr/bin/python3.9 -m pip install -e $( cwd )
+        displayName: 'Upgrade 3.9 virtualenv to local clone'
     - ${{ if or(eq(job.key, 'jython'), startsWith(job.key, 'jython-')) }}:
       - script: wget http://search.maven.org/remotecontent?filepath=org/python/jython-installer/2.7.1/jython-installer-2.7.1.jar -O $(Agent.ToolsDirectory)/jython.jar
         displayName: download jython
